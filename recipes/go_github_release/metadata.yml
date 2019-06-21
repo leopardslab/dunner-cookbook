@@ -1,0 +1,6 @@
+name: go_github_release
+description: "Dunner recipe for GitHub release of Go Projects"
+version: 0.0.1
+
+preInstallCmd: ""
+postInstallCmd: ""
