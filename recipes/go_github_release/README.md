@@ -10,7 +10,16 @@ Run below command in root directory of Project.
 $ dunner init go_github_release
 ```
 
-This creates a dunner task file `.dunner.yml` and also `.goreleaser.yml` which contains Github Release information. Edit it accordingly and run below command to make the release. 
+This creates a dunner task file `.dunner.yml` and also `.goreleaser.yml` which contains Github Release information. Edit it accordingly.
+
+To set the version of your project add git tag and push it to master branch remote. 
+
+```
+$ git tag -a <version> -m "Release version <version>"
+$ git push origin <version>
+```
+
+Run below command from project root directory to make the Github release with all binaries of your project along with generated Changelog and source code.
 
 ```
 $ dunner do go_github_release
