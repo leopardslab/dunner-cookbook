@@ -3,4 +3,4 @@ description: "Dunner recipe for GitHub release of Go Projects"
 version: 0.1.0
 
 preInstallCmd: "curl -O https://raw.githubusercontent.com/leopardlabs/dunner-cookbook/master/recipes/go_github_release/.goreleaser.yml"
-postInstallCmd: ""
+postInstallMessage: ""
