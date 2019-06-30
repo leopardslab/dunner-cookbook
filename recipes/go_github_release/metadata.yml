@@ -1,6 +1,21 @@
 name: go_github_release
 description: "Dunner recipe for GitHub release of Go Projects"
-version: 0.1.0
+version: "0.1.0"
 
 preInstallCmd: "curl -O https://raw.githubusercontent.com/leopardlabs/dunner-cookbook/master/recipes/go_github_release/.goreleaser.yml"
-postInstallMessage: ""
+
+postInstallMessage: |
+    This recipe creates a dunner task file `.dunner.yaml` and also `.goreleaser.yml` which contains Github Release information. Edit it accordingly.
+    
+    To set the version of your project add git tag and push it to master branch remote. 
+    
+    ```
+    $ git tag -a <version> -m "Release version <version>"
+    $ git push origin <version>
+    ```
+    
+    Run below command from project root directory to make the Github release with all binaries of your project along with generated Changelog and source code.
+    
+    ```
+    $ dunner do go_github_release
+    ```
