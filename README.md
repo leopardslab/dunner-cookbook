@@ -13,6 +13,7 @@ dunner-cookbook
 	└── <recipe_name>
 		└── <.dunner.yml>
 		└── <metadata.yml>
+└──cookbook.yml
 ```
 
 ## How to add your Dunner recipe?
@@ -21,6 +22,7 @@ Create us a pull request with your dunner task file in the structure as shown ab
 * The `recipes` folder contain a directory which is used as the name of recipe, with no spaces in the name, e.g. `go_github_release`. 
 * `.dunner.yml` file inside recipe folder should define the docker tasks, well documented.
 * Every recipe should have a `metadata.yml` which describes the recipe, with `name`, `description`, `version`, `preInstallCmd` and `postInstallCmd` values set.
+* The `cookbook.yml` file in dunner-cookbook repository contains the list of all available recipes. Add the name of your recipe to this list. It should match with the folder name you created in `recipes` folder.
 
 A sample dunner task file: 
 
