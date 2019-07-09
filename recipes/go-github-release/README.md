@@ -7,7 +7,7 @@ This is [Dunner](https://github.com/leopardslab/dunner) recipe for creating Gith
 Run below command in root directory of Project. 
 
 ```
-$ dunner init go_github_release
+$ dunner init go-github-release
 ```
 
 This recipe creates a dunner task file `.dunner.yml` and also `.goreleaser.yml` which contains Github Release information. Edit it accordingly.
@@ -22,5 +22,5 @@ $ git push origin <version>
 Run below command from project root directory to make the Github release with all binaries of your project along with generated Changelog and source code.
 
 ```
-$ dunner do go_github_release
+$ dunner do go-github-release
 ```
