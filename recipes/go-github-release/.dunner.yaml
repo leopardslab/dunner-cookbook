@@ -1,8 +1,8 @@
-go_github_release: 
+go-github-release: 
   - image: goreleaser/goreleaser
-  - commands:
+    commands:
     - ["goreleaser", "release"]
-  - envs:
+    envs:
     - GITHUB_TOKEN=`$GITHUB_TOKEN`
-  - mounts:
+    mounts:
     - ".:/app"
