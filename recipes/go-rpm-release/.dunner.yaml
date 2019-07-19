@@ -1,8 +1,0 @@
-go-rpm-release: 
-  - image: apoorvam6/go-rpm-release:v1.0.0 
-    commands:
-    - ["goreleaser", "release", "--rm-dist"]
-    mounts:
-    - ".:/app"
-    envs:
-    - GITHUB_TOKEN=`$GITHUB_TOKEN`

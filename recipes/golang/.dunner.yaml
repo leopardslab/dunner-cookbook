@@ -1,0 +1,66 @@
+lint:
+  - follow: setup
+    image: golangci/golangci-lint
+    commands:
+    - ["golangci-lint", "run"]
+
+vet: 
+  - follow: setup
+    image: golang
+    commands:
+    - ["go", "vet", "./..."]
+
+fmt: 
+  - follow: setup
+    image: golang
+    commands:
+    - ["go", "fmt", "./..."]
+
+setup:
+  - image: golang
+    commands:
+    - ["mkdir", "-p", "/dunner/go/bin"]
+    - ["curl", "-O", "https://raw.githubusercontent.com/golang/dep/master/install.sh"]
+    - ["sh", "install.sh"]
+    - ["./dep", "ensure", "-v"]
+    envs:
+    - GOPATH=/dunner/go
+    - INSTALL_DIRECTORY=/dunner/go/src/github.com/leopardslab/dunner
+    mounts:
+    - ".:/dunner/go/src/github.com/leopardslab/dunner:w"
+    dir: "/go/src/github.com/leopardslab/dunner"
+
+build:
+  - image: golang
+    commands:
+    - ["mkdir", "-p", "$GOPATH/bin"]
+    - ["curl", "-O", "https://raw.githubusercontent.com/golang/dep/master/install.sh"]
+    - ["sh", "install.sh"]
+    - ["./dep", "ensure", "-v"]
+    - ["go", "build", "./..."]
+    envs:
+    - GOPATH=/dunner/go
+    - INSTALL_DIRECTORY=/dunner/go/src/github.com/leopardslab/dunner
+    mounts:
+    - ".:/dunner/go/src/github.com/leopardslab/dunner:w"
+    dir: "/go/src/github.com/leopardslab/dunner"
+
+test:
+  - follow: setup
+    image: golang
+    commands:
+    - ["go", "test", "./..."]
+
+github_release:
+  - image: golang
+    commands:
+    - ["apt-get", "update"]
+    - ["apt-get", "install", "-y", "curl", "git", "rpm"]
+    - ["curl", "-Lo", "goreleaser.tgz", "https://github.com/goreleaser/goreleaser/releases/download/v0.112.2/goreleaser_Linux_x86_64.tar.gz"]
+    - ["tar", "-zxvf", "goreleaser.tgz", "-C", "/usr/local/bin/"]
+    - ["rm", "-f", "goreleaser.tgz"]
+    - ["goreleaser", "release", "--rm-dist"]
+    mounts:
+    - ".:/app"
+    envs:
+    - GITHUB_TOKEN=`$GITHUB_TOKEN`
