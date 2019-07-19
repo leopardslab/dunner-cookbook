@@ -1,3 +1,17 @@
+build:
+  - image: golang
+    commands:
+    - ["curl", "-O", "https://raw.githubusercontent.com/golang/dep/master/install.sh"]
+    - ["sh", "install.sh"]
+    - ["./dep", "ensure", "-v"]
+    - ["go", "build", "./..."]
+    envs:
+    - GOPATH=/dunner/go
+    - INSTALL_DIRECTORY=/dunner/go/src/github.com/leopardslab/dunner
+    mounts:
+    - ".:/dunner/go/src/github.com/leopardslab/dunner:w"
+    dir: "/go/src/github.com/leopardslab/dunner"
+
 lint:
   - follow: setup
     image: golangci/golangci-lint
@@ -19,25 +33,9 @@ fmt:
 setup:
   - image: golang
     commands:
-    - ["mkdir", "-p", "/dunner/go/bin"]
     - ["curl", "-O", "https://raw.githubusercontent.com/golang/dep/master/install.sh"]
     - ["sh", "install.sh"]
     - ["./dep", "ensure", "-v"]
-    envs:
-    - GOPATH=/dunner/go
-    - INSTALL_DIRECTORY=/dunner/go/src/github.com/leopardslab/dunner
-    mounts:
-    - ".:/dunner/go/src/github.com/leopardslab/dunner:w"
-    dir: "/go/src/github.com/leopardslab/dunner"
-
-build:
-  - image: golang
-    commands:
-    - ["mkdir", "-p", "$GOPATH/bin"]
-    - ["curl", "-O", "https://raw.githubusercontent.com/golang/dep/master/install.sh"]
-    - ["sh", "install.sh"]
-    - ["./dep", "ensure", "-v"]
-    - ["go", "build", "./..."]
     envs:
     - GOPATH=/dunner/go
     - INSTALL_DIRECTORY=/dunner/go/src/github.com/leopardslab/dunner
