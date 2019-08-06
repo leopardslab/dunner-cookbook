@@ -1,8 +1,16 @@
+init-release:
+  - image: goreleaser/goreleaser
+    commands:
+    - ["goreleaser", "init"]
+
+generate-artifacts:
+  - image: goreleaser/goreleaser
+    commands:
+    - ["goreleaser", "release", "--snapshot", "--skip-publish", "--rm-dist"]
+
 go-github-release: 
   - image: goreleaser/goreleaser
     commands:
-    - ["goreleaser", "release"]
+    - ["goreleaser", "release", "--snapshot", "--rm-dist"]
     envs:
     - GITHUB_TOKEN=`$GITHUB_TOKEN`
-    mounts:
-    - ".:/app"
