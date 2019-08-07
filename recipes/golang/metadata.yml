@@ -2,17 +2,13 @@ name: golang
 description: "Dunner recipe for Golang projects"
 version: "0.0.1"
 
-preInstallCmd: "curl -O https://raw.githubusercontent.com/leopardlabs/dunner-cookbook/master/recipes/golang/.goreleaser.yml"
+preInstallCmd: ""
 
 postInstallMessage: |
     This recipe creates a dunner task file `.dunner.yaml` which has dunner tasks for lint, build, test, release for Go projects.
     Edit it accordingly and set environment variable `GITHUB_TOKEN`.
 
-    To set the version of your project add git tag and push it to master branch remote. 
+    Run `dunner do <task_name>` to run the task.
 
-    ```
-    $ git tag -a <version> -m "Release version <version>"
-    $ git push origin <version>
-    ```
-
+    Run `dunner do init-release` to initialize project release and customize configurations in generated `.goreleaser.yml` file.
     Check http://goreleaser.com for more configurations on release task.
