@@ -5,10 +5,7 @@ version: "0.0.1"
 preInstallCmd: ""
 
 postInstallMessage: |
-    This recipe creates a dunner task file `.dunner.yaml` which has dunner tasks for lint, build, test, release for Go projects.
-    Edit it accordingly and set environment variable `GITHUB_TOKEN`.
+    This recipe creates a dunner task file `.dunner.yaml` which has dunner tasks for lint, build, test for Go projects.
+    Edit it accordingly and set required environment variables.
 
     Run `dunner do <task_name>` to run the task.
-
-    Run `dunner do init-release` to initialize project release and customize configurations in generated `.goreleaser.yml` file.
-    Check http://goreleaser.com for more configurations on release task.
