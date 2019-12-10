@@ -1,4 +1,4 @@
-go-github-release: 
+goreleaser: 
   - image: goreleaser/goreleaser
     commands:
     - ["goreleaser", "release"]
