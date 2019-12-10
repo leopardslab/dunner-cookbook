@@ -1,8 +1,19 @@
-goreleaser: 
-  - image: goreleaser/goreleaser
-    commands:
-    - ["goreleaser", "release"]
-    envs:
-    - GITHUB_TOKEN=`$GITHUB_TOKEN`
-    mounts:
-    - ".:/app"
+tasks:
+ goreleaser:
+  steps:
+   - image: goreleaser/goreleaser
+     commands:
+      - ["goreleaser", "release"]
+     envs:
+      - GITHUB_TOKEN=`$GITHUB_TOKEN`
+     mounts:
+      - ".:/app"
+
+ lint:
+   steps:
+    - image: golangci/golangci-lint:v1.21.0
+      commands:
+       - ["golangci-lint", "run", "../go/app"]
+      mounts:
+       - ".:/go/app"
+       - '.cache:/.cache:wr'
