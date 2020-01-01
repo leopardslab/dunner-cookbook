@@ -2,7 +2,7 @@ name: go-github-release
 description: "Dunner recipe for GitHub release of Go Projects"
 version: "0.1.0"
 
-preInstallCmd: "curl -O https://raw.githubusercontent.com/leopardlabs/dunner-cookbook/master/recipes/go-github-release/.goreleaser.yml"
+preInstallCmd: "curl -O https://raw.githubusercontent.com/leopardslab/dunner-cookbook/master/recipes/go-github-release/.goreleaser.yml"
 
 postInstallMessage: |
     This recipe creates a dunner task file `.dunner.yaml` and also `.goreleaser.yml` which contains Github Release information. Edit it accordingly.

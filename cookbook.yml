@@ -1,2 +1,3 @@
 recipes:
   - go-github-release
+  - golang

@@ -1,0 +1,11 @@
+name: golang
+description: "Dunner recipe for Golang projects"
+version: "0.0.1"
+
+preInstallCmd: ""
+
+postInstallMessage: |
+    This recipe creates a dunner task file `.dunner.yaml` which has dunner tasks for lint, build, test for Go projects.
+    Edit it accordingly and set required environment variables.
+
+    Run `dunner do <task_name>` to run the task.
