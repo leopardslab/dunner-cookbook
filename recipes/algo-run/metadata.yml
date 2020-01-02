@@ -1,0 +1,43 @@
+name: algo-run
+description: "Dunner recipe for running algorithmic programs using intended language"
+version: "0.0.1"
+
+preInstallCmd: ""
+
+postInstallMessage: |
+    This recipe creates a dunner task file `.dunner.yaml`. Run below commands from project root directory to run your program with corresponding language. 
+    
+    Python 2.7   
+    ```
+    $ dunner do python27 <file_name>
+    ```
+
+    ### Python3.4
+    ```
+    $ dunner do python34 <file_name>
+    ```
+
+    ### Free Pascal Compilter 2.6.2
+    ```
+    $ dunner do fpc <file_name>
+    ```
+
+    ### gcc 4.8
+    ```
+    $ dunner do gcc <file_name>
+    ```
+
+    ### g++ 4.8
+    ```
+    $ dunner do g++ <file_name>
+    ```
+
+    ### Python 3.7
+    ```
+    $ dunner do python37 <file_name>
+    ```
+
+    ### Python3.8
+    ```
+    $ dunner do python38 <file_name>
+    ```

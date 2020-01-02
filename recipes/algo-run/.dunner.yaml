@@ -1,0 +1,62 @@
+mounts:
+  - .:/app
+
+tasks:
+  python27:
+    steps:
+      - name: Python 2.7
+        # Image name that has to be pulled from a registry
+        image: python:2.7
+        commands:
+          - ["python", "-O", "$1.py"]
+  python34:
+    steps:
+      - name: Python 3.4
+        # Image name that has to be pulled from a registry
+        image: python:3.4
+        commands:
+          - ["python", "-O", "$1.py"]
+  java8:
+    steps:
+      - name: Java 8
+        # Image name that has to be pulled from a registry
+        image: openjdk:8
+        commands:
+          - ["javac", "$1.java"]
+          - ["java", "$1"]
+  gcc:
+    steps:
+      - name: gcc 4.8
+        image: gcc:4.8
+        commands:
+          - ["gcc", "-O2", "-lm", "$1.c", "-o", "$1"]
+          - ["./$1"]
+  g++:
+    steps:
+      - name: g++ 4.8
+        image: gcc:4.8
+        commands:
+          - ["g++", "-O2", "-lm", "-std=c++0x", "$1.cpp", "-o", "$1"]
+          - ["./$1"]
+  fpc:
+    steps:
+      - name: Free Pascal Compiler 2.6
+        image: nacyot/pascal-fp_compiler:apt
+        commands:
+          - ["fpc", "$1.pas"]
+          - ["./$1"]
+  python37:
+    steps:
+      - name: Python 3.7
+        # Image name that has to be pulled from a registry
+        image: python:3.7
+        commands:
+          - ["python", "-O", "$1.py"]
+  python38:
+    steps:
+      - name: Python 3.8
+        # Image name that has to be pulled from a registry
+        image: python:3
+        commands:
+          - ["python", "-O", "$1.py"]
+  
