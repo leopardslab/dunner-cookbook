@@ -1,14 +1,22 @@
 next:
     - follow: init
       image: node:10
+      mounts:
+      - ".:/src"
       commands:
       - ["next", "-j$1"]
+      envs:
+      - AUTH_SECRET=`$AUTH_SECRET`
 
 next-custom:
     - follow: init
       image: node:10
+      mounts:
+      - ".:/src"
       commands:
-      - ["npm run", "-j$1"]
+      - ["npm", "-j$1"]
+      envs:
+      - AUTH_SECRET=`$AUTH_SECRET`
 
 init:
     - name: nextjsspa
@@ -16,7 +24,6 @@ init:
       mounts:
       - ".:/src"
       commands:
-      - ["cd", "src"]
       - ["npm", "install"]
       envs:
       - AUTH_SECRET=`$AUTH_SECRET`
