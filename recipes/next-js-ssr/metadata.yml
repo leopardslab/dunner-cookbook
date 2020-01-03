@@ -14,7 +14,7 @@ postInstallMessage: |
     You can also execute any custom npm script that you have specified by prepending `dunner do next-custom` as follows
     
     ```
-    $ dunner do next-custom lint:fix
+    $ dunner do next-custom deploy:heroku
     ```
 
     Custom Script Syntax:

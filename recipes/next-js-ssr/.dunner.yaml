@@ -1,5 +1,4 @@
 next:
-    - follow: init
       image: node:10
       mounts:
       - ".:/src"
@@ -9,12 +8,38 @@ next:
       - AUTH_SECRET=`$AUTH_SECRET`
 
 next-custom:
-    - follow: init
       image: node:10
       mounts:
       - ".:/src"
       commands:
       - ["npm", "-j$1"]
+      envs:
+      - AUTH_SECRET=`$AUTH_SECRET`
+
+build:
+      image: node:10
+      mounts:
+      - ".:/src"
+      commands:
+      - ["next", "build"]
+      envs:
+      - AUTH_SECRET=`$AUTH_SECRET`
+
+deploy-heroku:
+      - follow: build
+      mounts:
+        - "./build:/src"
+      commands:
+        - ["curl", "https://cli-assets.heroku.com/install.sh", "|", "sh"]
+        - ["git", "add", "./src"]
+        - ["heroku", "git:remote", "-a", "-j$1"]
+
+lint:
+      image: node:10
+      mounts:
+      - ".:/src"
+      commands:
+      - ["npm", "run", "lint"]
       envs:
       - AUTH_SECRET=`$AUTH_SECRET`
 

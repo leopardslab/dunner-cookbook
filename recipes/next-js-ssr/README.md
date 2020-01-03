@@ -40,6 +40,23 @@ Run the following to start the project in a development server
 $ dunner do next
 ```
 
+## Other Scripts
+
+Provided you have installed and configured a linter in your project. You can run this script by running
+```bash
+$ dunner do lint
+```
+
+As shorthand for building the project, you can run this script to build the project to `build`
+```bash
+$ dunner do build
+```
+
+Deploy app to Heroku (you must place a `.netrc` copy in the root containing your credentials)
+```bash
+$ dunner do deploy INSERT_HEROKU_APP_NAME
+```
+
 ## Custom npm Scripts
 
 You can execute the `next-custom` task in order to run any custom npm scripts that you have specified in your project:
