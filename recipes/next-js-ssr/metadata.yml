@@ -1,0 +1,23 @@
+name: next-js-ssr
+description: "Dunner recipe for running SSR Next.js projects in a standardized Node environment"
+version: "0.1.0"
+
+postInstallMessage: |
+    This recipe takes in your current Next.js project and will run it in a standardized Node v10 environment.
+    
+    You can run all of the default Next scripts by executing the name of the script after `dunner do next` as follows
+    
+    ```
+    $ dunner do next build
+    ```
+    
+    You can also execute any custom npm script that you have specified by prepending `dunner do next-custom` as follows
+    
+    ```
+    $ dunner do next-custom lint:fix
+    ```
+
+    Custom Script Syntax:
+    ```
+    $ dunner do next-custom INSERT_SCRIPT_NAME_HERE
+    ```
